@@ -6,7 +6,7 @@
     <description>Recent content on 姜小豆的日常</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 02 Dec 2022 09:34:28 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 04 Dec 2022 14:23:42 +0800</lastBuildDate>
     
         <atom:link href="https://onionc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,19 +14,20 @@
     
         <item>
         <title>github pages 博客</title>
-        <link>https://onionc.github.io/post/github-pages-blog/</link>
-        <pubDate>Fri, 02 Dec 2022 09:34:28 +0800</pubDate>
+        <link>https://onionc.github.io/post/github-pages-%E5%8D%9A%E5%AE%A2/</link>
+        <pubDate>Sun, 04 Dec 2022 14:23:42 +0800</pubDate>
         
-        <guid>https://onionc.github.io/post/github-pages-blog/</guid>
-        <description>姜小豆的日常 https://onionc.github.io/post/github-pages-blog/ -&lt;p&gt;选了一个博客主题，是基于hugo的。&lt;/p&gt;
-&lt;h4 id=&#34;步骤&#34;&gt;步骤&lt;/h4&gt;
+        <guid>https://onionc.github.io/post/github-pages-%E5%8D%9A%E5%AE%A2/</guid>
+        <description>姜小豆的日常 https://onionc.github.io/post/github-pages-%E5%8D%9A%E5%AE%A2/ -&lt;h1 id=&#34;ddd&#34;&gt;ddd&lt;/h1&gt;
+&lt;p&gt;选了一个博客主题，是基于hugo的。&lt;/p&gt;
+&lt;h3 id=&#34;步骤&#34;&gt;步骤&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;安装 &lt;a href=&#34;https://go.dev/doc/install&#34; title=&#34;Go&#34;&gt;Go&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;安装hugo &lt;code&gt;go install -tags extended github.com/gohugoio/hugo@latest&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;报错：go: &lt;a href=&#34;http://github.com/gohugoio/hugo@latest:&#34; title=&#34;github.com/gohugoio/hugo@latest:&#34;&gt;github.com/gohugoio/hugo@latest:&lt;/a&gt; module &lt;a href=&#34;http://github.com/gohugoio/hugo:&#34; title=&#34;github.com/gohugoio/hugo:&#34;&gt;github.com/gohugoio/hugo:&lt;/a&gt; Get &amp;ldquo;&lt;a href=&#34;https://proxy.golang.org/github.com/gohugoio/hugo/@v/list&#34; title=&#34;https://proxy.golang.org/github.com/gohugoio/hugo/@v/list&#34;&gt;https://proxy.golang.org/github.com/gohugoio/hugo/@v/list&lt;/a&gt;&amp;rdquo;: dial tcp 142.251.42.241:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.&lt;/p&gt;
+&lt;p&gt;报错：go: github.com/gohugoio/hugo@latest: module github.com/gohugoio/hugo: Get &amp;ldquo;&lt;a href=&#34;https://proxy.golang.org/github.com/gohugoio/hugo/@v/list&#34;&gt;https://proxy.golang.org/github.com/gohugoio/hugo/@v/list&lt;/a&gt;&amp;rdquo;: dial tcp 142.251.42.241:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.&lt;/p&gt;
 &lt;p&gt;需要设置模块代理 &lt;code&gt;go env -w GOPROXY=https://goproxy.cn&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;再次安装hugo，报错&lt;code&gt;cgo: C compiler &amp;quot;gcc&amp;quot; not found: exec: &amp;quot;gcc&amp;quot;: executable file not found in %PATH%&lt;/code&gt;。需要GCC，在&lt;a href=&#34;https://gohugo.io/installation/windows/#build-from-source&#34; title=&#34;go huge&#34;&gt;go huge&lt;/a&gt;源码安装页面也有说明。&lt;/p&gt;
 &lt;p&gt;可以安装mingw，把bin放到环境变量Path中。&lt;/p&gt;
@@ -50,8 +51,45 @@
 &lt;li&gt;
 &lt;p&gt;本地运行预览，xxx 目录下，&lt;code&gt;hugo server -D&lt;/code&gt;。访问 &lt;a href=&#34;http://localhost:1313/&#34; title=&#34;http://localhost:1313/&#34;&gt;http://localhost:1313/&lt;/a&gt;。&lt;/p&gt;
 &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;生成使用 &lt;code&gt;hugo -D&lt;/code&gt; 命令。会将静态网站生成到 public 目录下。&lt;code&gt;-D&lt;/code&gt; 参数是为了包含草稿文章。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;新增文章&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;hugo new post/test.md&lt;/code&gt; 在content/post/目录下新增了一个test.md文档。如果自己移动一个md文件进去是不会在网站显示的，因为没有格式说明，如下是yaml的格式：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-纯文本&#34; data-lang=&#34;纯文本&#34;&gt;---
+title: &amp;#34;github pages 博客&amp;#34;
+date: 2022-12-02T09:34:28+08:00
+description: &amp;#39;搭建博客&amp;#39;
+tags: [ &amp;#34;github&amp;#34;, &amp;#34;blog&amp;#34;]
+categories: [&amp;#34;tools&amp;#34;]
+slug: &amp;#34;github-pages-blog&amp;#34;
+draft: false
+---
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;参考 &lt;a href=&#34;https://goodmemory.cc/hugo-md%e6%96%87%e6%a1%a3%e4%b9%a6%e5%86%99%e6%97%b6%e7%9a%84%e6%a0%bc%e5%bc%8f%e8%af%b4%e6%98%8e/&#34; title=&#34;hugo-md文档书写时的格式说明&#34;&gt;hugo-md文档书写时的格式说明&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
-- https://onionc.github.io/post/github-pages-blog/ - </description>
+&lt;p&gt;注：如果新建页面，里面文章列表为空的话，页面会显示404。有草稿文章但是发布时没有用&lt;code&gt;-D&lt;/code&gt;参数也不算。&lt;/p&gt;
+&lt;h3 id=&#34;最佳实践&#34;&gt;最佳实践：&lt;/h3&gt;
+&lt;p&gt;将带hugo主题的代码（hugo生成项目和主题拉取代码）放到一个私密库中。&lt;/p&gt;
+&lt;p&gt;将生成好的public 代码放到 username.github.io 库中。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://onionc.github.io/images/1670134455206_wq1xyXoCeo.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/57361697&#34; title=&#34;如何利用 GitHub Pages 和 Hugo 轻松搭建个人博客？&#34;&gt;如何利用 GitHub Pages 和 Hugo 轻松搭建个人博客？&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+- https://onionc.github.io/post/github-pages-%E5%8D%9A%E5%AE%A2/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>Hello</title>
+        <link>https://onionc.github.io/yiya/hello/</link>
+        <pubDate>Sun, 04 Dec 2022 14:13:32 +0800</pubDate>
+        
+        <guid>https://onionc.github.io/yiya/hello/</guid>
+        <description>姜小豆的日常 https://onionc.github.io/yiya/hello/ -- https://onionc.github.io/yiya/hello/ - </description>
         </item>
     
     
