@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>姜小豆的日常</title>
-    <link>http://example.org/</link>
+    <link>https://onionc.github.io/</link>
     <description>Recent content on 姜小豆的日常</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Fri, 02 Dec 2022 09:34:28 +0800</lastBuildDate>
     
-        <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://onionc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     
         <item>
         <title>github pages 博客</title>
-        <link>http://example.org/post/github-pages-blog/</link>
+        <link>https://onionc.github.io/post/github-pages-blog/</link>
         <pubDate>Fri, 02 Dec 2022 09:34:28 +0800</pubDate>
         
-        <guid>http://example.org/post/github-pages-blog/</guid>
-        <description>姜小豆的日常 http://example.org/post/github-pages-blog/ -&lt;p&gt;选了一个博客主题，是基于hugo的。&lt;/p&gt;
+        <guid>https://onionc.github.io/post/github-pages-blog/</guid>
+        <description>姜小豆的日常 https://onionc.github.io/post/github-pages-blog/ -&lt;p&gt;选了一个博客主题，是基于hugo的。&lt;/p&gt;
 &lt;h4 id=&#34;步骤&#34;&gt;步骤&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -51,7 +51,7 @@
 &lt;p&gt;本地运行预览，xxx 目录下，&lt;code&gt;hugo server -D&lt;/code&gt;。访问 &lt;a href=&#34;http://localhost:1313/&#34; title=&#34;http://localhost:1313/&#34;&gt;http://localhost:1313/&lt;/a&gt;。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-- http://example.org/post/github-pages-blog/ - </description>
+- https://onionc.github.io/post/github-pages-blog/ - </description>
         </item>
     
     
