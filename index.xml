@@ -13,35 +13,35 @@
     
     
         <item>
-        <title>Test2</title>
-        <link>https://onionc.github.io/yiya/test2/</link>
+        <title>你好</title>
+        <link>https://onionc.github.io/yiya/hello/</link>
         <pubDate>Sun, 04 Dec 2022 10:39:02 +0800</pubDate>
         
-        <guid>https://onionc.github.io/yiya/test2/</guid>
-        <description>姜小豆的日常 https://onionc.github.io/yiya/test2/ -- https://onionc.github.io/yiya/test2/ - </description>
+        <guid>https://onionc.github.io/yiya/hello/</guid>
+        <description>姜小豆的日常 https://onionc.github.io/yiya/hello/ -- https://onionc.github.io/yiya/hello/ - </description>
         </item>
     
     
     
         <item>
-        <title>github pages 博客</title>
-        <link>https://onionc.github.io/post/github-pages-blog/</link>
+        <title>github pages 搭建博客</title>
+        <link>https://onionc.github.io/post/set-up-blog-on-github/</link>
         <pubDate>Fri, 02 Dec 2022 09:34:28 +0800</pubDate>
         
-        <guid>https://onionc.github.io/post/github-pages-blog/</guid>
-        <description>姜小豆的日常 https://onionc.github.io/post/github-pages-blog/ -&lt;p&gt;选了一个博客主题，是基于hugo的。&lt;/p&gt;
-&lt;h4 id=&#34;步骤&#34;&gt;步骤&lt;/h4&gt;
+        <guid>https://onionc.github.io/post/set-up-blog-on-github/</guid>
+        <description>姜小豆的日常 https://onionc.github.io/post/set-up-blog-on-github/ -&lt;p&gt;选了一个博客主题，是基于hugo的。&lt;/p&gt;
+&lt;h3 id=&#34;步骤&#34;&gt;步骤&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;安装 &lt;a href=&#34;https://go.dev/doc/install&#34; title=&#34;Go&#34;&gt;Go&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;安装 &lt;a href=&#34;https://go.dev/doc/install&#34;&gt;Go&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;安装hugo &lt;code&gt;go install -tags extended github.com/gohugoio/hugo@latest&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;报错：go: &lt;a href=&#34;http://github.com/gohugoio/hugo@latest:&#34; title=&#34;github.com/gohugoio/hugo@latest:&#34;&gt;github.com/gohugoio/hugo@latest:&lt;/a&gt; module &lt;a href=&#34;http://github.com/gohugoio/hugo:&#34; title=&#34;github.com/gohugoio/hugo:&#34;&gt;github.com/gohugoio/hugo:&lt;/a&gt; Get &amp;ldquo;&lt;a href=&#34;https://proxy.golang.org/github.com/gohugoio/hugo/@v/list&#34; title=&#34;https://proxy.golang.org/github.com/gohugoio/hugo/@v/list&#34;&gt;https://proxy.golang.org/github.com/gohugoio/hugo/@v/list&lt;/a&gt;&amp;rdquo;: dial tcp 142.251.42.241:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.&lt;/p&gt;
+&lt;p&gt;报错：go: github.com/gohugoio/hugo@latest: module github.com/gohugoio/hugo: Get &amp;ldquo;&lt;a href=&#34;https://proxy.golang.org/github.com/gohugoio/hugo/@v/list%22&#34;&gt;https://proxy.golang.org/github.com/gohugoio/hugo/@v/list&amp;quot;&lt;/a&gt;: dial tcp 142.251.42.241:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.&lt;/p&gt;
 &lt;p&gt;需要设置模块代理 &lt;code&gt;go env -w GOPROXY=https://goproxy.cn&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;再次安装hugo，报错&lt;code&gt;cgo: C compiler &amp;quot;gcc&amp;quot; not found: exec: &amp;quot;gcc&amp;quot;: executable file not found in %PATH%&lt;/code&gt;。需要GCC，在&lt;a href=&#34;https://gohugo.io/installation/windows/#build-from-source&#34; title=&#34;go huge&#34;&gt;go huge&lt;/a&gt;源码安装页面也有说明。&lt;/p&gt;
+&lt;p&gt;再次安装hugo，报错&lt;code&gt;cgo: C compiler &amp;quot;gcc&amp;quot; not found: exec: &amp;quot;gcc&amp;quot;: executable file not found in %PATH%&lt;/code&gt;。需要GCC，在&lt;a href=&#34;https://gohugo.io/installation/windows/#build-from-source&#34;&gt;go huge&lt;/a&gt;源码安装页面也有说明。&lt;/p&gt;
 &lt;p&gt;可以安装mingw，把bin放到环境变量Path中。&lt;/p&gt;
-&lt;p&gt;输入 &lt;code&gt;hugo version&lt;/code&gt; 报错。放弃这个方法。直接&lt;a href=&#34;https://github.com/gohugoio/hugo/releases/tag/v0.107.0&#34; title=&#34;下载安装包&#34;&gt;下载安装包&lt;/a&gt;（intel下载amd即可）。&lt;/p&gt;
+&lt;p&gt;输入 &lt;code&gt;hugo version&lt;/code&gt; 报错。放弃这个方法。直接&lt;a href=&#34;https://github.com/gohugoio/hugo/releases/tag/v0.107.0&#34;&gt;下载安装包&lt;/a&gt;（intel下载amd即可）。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;github上新建一个 username.github.io 的仓库。（username是自己在github的用户名）。拉取仓库&lt;/p&gt;
@@ -51,18 +51,120 @@
 &lt;p&gt;进入仓库的目录，输入 &lt;code&gt;hugo new site xxx&lt;/code&gt;，新建站点&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;进入xxx/themes, 克隆一个&lt;a href=&#34;https://themes.gohugo.io/&#34; title=&#34;主题&#34;&gt;主题&lt;/a&gt;。（也可以用子模块引用的方式，不过我受过伤就不用了）&lt;/p&gt;
-&lt;p&gt;我用了&lt;a href=&#34;https://themes.gohugo.io/themes/hugo-theme-diary/&#34; title=&#34;这个主题&#34;&gt;这个主题&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;进入xxx/themes, 克隆一个&lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;主题&lt;/a&gt;。（也可以用子模块引用的方式，不过我受过伤就不用了）&lt;/p&gt;
+&lt;p&gt;我用了&lt;a href=&#34;https://themes.gohugo.io/themes/hugo-theme-diary/&#34;&gt;这个主题&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;git clone git@github.com:AmazingRise/hugo-theme-diary.git diary&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;配置，打开xxx/config.toml 增加主题 &lt;code&gt;theme = &#39;diary&#39;&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;本地运行预览，xxx 目录下，&lt;code&gt;hugo server -D&lt;/code&gt;。访问 &lt;a href=&#34;http://localhost:1313/&#34; title=&#34;http://localhost:1313/&#34;&gt;http://localhost:1313/&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;本地运行预览，xxx 目录下，&lt;code&gt;hugo server -D&lt;/code&gt;。访问 &lt;a href=&#34;http://localhost:1313/&#34;&gt;http://localhost:1313/&lt;/a&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;生成使用 &lt;code&gt;hugo -D&lt;/code&gt; 命令。会将静态网站生成到 public 目录下。&lt;code&gt;-D&lt;/code&gt; 参数是为了包含草稿文章。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;新增文章&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;hugo new post/test.md&lt;/code&gt; 在content/post/目录下新增了一个test.md文档。如果自己移动一个md文件进去是不会在网站显示的，因为没有格式说明，如下是yaml的格式：&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-- https://onionc.github.io/post/github-pages-blog/ - </description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;title: &amp;#34;github pages 博客&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;date: 2022-12-02T09:34:28+08:00
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;description: &amp;#39;搭建博客&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tags: [ &amp;#34;github&amp;#34;, &amp;#34;blog&amp;#34;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;categories: [&amp;#34;tools&amp;#34;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;slug: &amp;#34;github-pages-blog&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;draft: false
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre&gt;&lt;code&gt;参考 [hugo-md文档书写时的格式说明](https://goodmemory.cc/hugo-md%e6%96%87%e6%a1%a3%e4%b9%a6%e5%86%99%e6%97%b6%e7%9a%84%e6%a0%bc%e5%bc%8f%e8%af%b4%e6%98%8e/)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注：如果新建页面，里面文章列表为空的话，页面会显示404。有草稿文章但是发布时没有用&lt;code&gt;-D&lt;/code&gt;参数也不算。&lt;/p&gt;
+&lt;h3 id=&#34;最佳实践&#34;&gt;最佳实践：&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;将带hugo主题的代码（hugo生成项目和主题拉取代码）放到一个私密库中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将生成好的public 代码放到 username.github.io 库中。或者使用子模块（3-4步）：&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;然后，使用submodule 将后者放到前者的子模块中。&lt;code&gt; git submodule add  git@github.com:onionc/onionc.github.io.git  ./public&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;（如果有public先删除）&lt;/p&gt;
+&lt;p&gt;（重新拉取hugo羡慕时，clone后需要 &lt;code&gt;git submodule update --init --recursive&lt;/code&gt;来更新子模块）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在hugo项目下新建一个用来发布博客的脚本&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-Bash&#34; data-lang=&#34;Bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#! /bin/bash
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;---------- 删除(排除.git) -----------&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm -rf public/* | egrep -v &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.git&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#生成&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;---------- 生成(含草稿) ---------- &amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo -D
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;---------- 上传git -------------&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; ! -d &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;public&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    echo  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;public 不存在&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;#exit 0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    cd public
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    git add .
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    git commit -m &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;update&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    git push origin main
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;---------  delay 60s ---------- &amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sleep 1m
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;上面的3、4步是子模块的方式（用了一段时间感觉不太好用）。如果是两个库分开放，脚本如下：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-Bash&#34; data-lang=&#34;Bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#! /bin/bash
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#生成&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;---------- 生成(含草稿) ---------- &amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo -D
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;---------- 删除(排除.git) -----------&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;find ../onionc.github.io/* -not -name &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;.git&amp;#34;&lt;/span&gt; | xargs rm -rf
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;---------- 移动文件夹 ---------- &amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cp -rf public/* ../onionc.github.io/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;---------- 上传git -------------&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; ! -d &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;../onionc.github.io&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    echo  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;库不存在&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;#exit 0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    cd ../onionc.github.io
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    git add .
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    git commit -m &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;update&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    git push origin main
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;---------  delay 60s ---------- &amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sleep 1m
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;发布文章的流程&#34;&gt;发布文章的流程&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;将md从某处复制到 &lt;code&gt;content&lt;/code&gt; 下的某个子目录（也可以是content）。（需要增加格式头。名称和日期必须）&lt;/li&gt;
+&lt;li&gt;图片放到子目录的&lt;code&gt;images/&lt;/code&gt; 文件夹，将md中的图片地址改为 &lt;code&gt;../images&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;点击发布脚本提交博客。&lt;/li&gt;
+&lt;li&gt;提交hugo项目。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;预览：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../images/1670134455206_wq1xyXoCeo.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/57361697&#34;&gt;如何利用 GitHub Pages 和 Hugo 轻松搭建个人博客？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/kakadiablo/article/details/119563791&#34;&gt;git submodule 目录为空&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;待读&lt;a href=&#34;https://www.jianshu.com/p/c5297a8bb1e7&#34;&gt;Hugo 不完美教程 - II: Hugo 目录组织&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+- https://onionc.github.io/post/set-up-blog-on-github/ - </description>
         </item>
     
     

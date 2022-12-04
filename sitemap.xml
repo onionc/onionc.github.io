@@ -2,10 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://onionc.github.io/yiya/test2/</loc>
+    <loc>https://onionc.github.io/yiya/</loc>
     <lastmod>2022-12-04T10:39:02+08:00</lastmod>
   </url><url>
-    <loc>https://onionc.github.io/yiya/</loc>
+    <loc>https://onionc.github.io/yiya/hello/</loc>
     <lastmod>2022-12-04T10:39:02+08:00</lastmod>
   </url><url>
     <loc>https://onionc.github.io/</loc>
@@ -23,7 +23,7 @@
     <loc>https://onionc.github.io/tags/github/</loc>
     <lastmod>2022-12-02T09:34:28+08:00</lastmod>
   </url><url>
-    <loc>https://onionc.github.io/post/github-pages-blog/</loc>
+    <loc>https://onionc.github.io/post/set-up-blog-on-github/</loc>
     <lastmod>2022-12-02T09:34:28+08:00</lastmod>
   </url><url>
     <loc>https://onionc.github.io/post/</loc>
