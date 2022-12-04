@@ -73,7 +73,7 @@ draft: false
 &lt;h3 id=&#34;最佳实践&#34;&gt;最佳实践：&lt;/h3&gt;
 &lt;p&gt;将带hugo主题的代码（hugo生成项目和主题拉取代码）放到一个私密库中。&lt;/p&gt;
 &lt;p&gt;将生成好的public 代码放到 username.github.io 库中。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://onionc.github.io/images/1670134455206_wq1xyXoCeo.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../images/1670134455206_wq1xyXoCeo.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/57361697&#34; title=&#34;如何利用 GitHub Pages 和 Hugo 轻松搭建个人博客？&#34;&gt;如何利用 GitHub Pages 和 Hugo 轻松搭建个人博客？&lt;/a&gt;&lt;/li&gt;
