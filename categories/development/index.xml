@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Development on 姜小豆的日常</title>
-    <link>http://example.org/categories/development/</link>
+    <link>https://onionc.github.io/categories/development/</link>
     <description>Recent content in Development on 姜小豆的日常</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 02 Dec 2022 09:34:28 +0800</lastBuildDate><atom:link href="http://example.org/categories/development/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 02 Dec 2022 09:34:28 +0800</lastBuildDate><atom:link href="https://onionc.github.io/categories/development/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>github pages 博客</title>
-      <link>http://example.org/post/github-pages-blog/</link>
+      <link>https://onionc.github.io/post/github-pages-blog/</link>
       <pubDate>Fri, 02 Dec 2022 09:34:28 +0800</pubDate>
       
-      <guid>http://example.org/post/github-pages-blog/</guid>
+      <guid>https://onionc.github.io/post/github-pages-blog/</guid>
       <description>选了一个博客主题，是基于hugo的。
 步骤 安装 Go
 安装hugo go install -tags extended github.com/gohugoio/hugo@latest
