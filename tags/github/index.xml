@@ -6,20 +6,21 @@
     <description>Recent content in github on 姜小豆的日常</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sun, 04 Dec 2022 14:23:42 +0800</lastBuildDate><atom:link href="https://onionc.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 02 Dec 2022 09:34:28 +0800</lastBuildDate><atom:link href="https://onionc.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>github pages 博客</title>
-      <link>https://onionc.github.io/post/github-pages-%E5%8D%9A%E5%AE%A2/</link>
-      <pubDate>Sun, 04 Dec 2022 14:23:42 +0800</pubDate>
+      <link>https://onionc.github.io/post/github-pages-blog/</link>
+      <pubDate>Fri, 02 Dec 2022 09:34:28 +0800</pubDate>
       
-      <guid>https://onionc.github.io/post/github-pages-%E5%8D%9A%E5%AE%A2/</guid>
-      <description>ddd 选了一个博客主题，是基于hugo的。
+      <guid>https://onionc.github.io/post/github-pages-blog/</guid>
+      <description>选了一个博客主题，是基于hugo的。
 步骤 安装 Go
 安装hugo go install -tags extended github.com/gohugoio/hugo@latest
 报错：go: github.com/gohugoio/hugo@latest: module github.com/gohugoio/hugo: Get &amp;ldquo;https://proxy.golang.org/github.com/gohugoio/hugo/@v/list&amp;rdquo;: dial tcp 142.251.42.241:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
 需要设置模块代理 go env -w GOPROXY=https://goproxy.cn。
 再次安装hugo，报错cgo: C compiler &amp;quot;gcc&amp;quot; not found: exec: &amp;quot;gcc&amp;quot;: executable file not found in %PATH%。需要GCC，在go huge源码安装页面也有说明。
-可以安装mingw，把bin放到环境变量Path中。</description>
+可以安装mingw，把bin放到环境变量Path中。
+输入 hugo version 报错。放弃这个方法。直接下载安装包（intel下载amd即可）。</description>
     </item>
     
   </channel>
