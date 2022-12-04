@@ -1,0 +1,59 @@
+<?xml-stylesheet href="/rss.xsl" type="text/xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>姜小豆的日常</title>
+    <link>http://example.org/</link>
+    <description>Recent content on 姜小豆的日常</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Fri, 02 Dec 2022 09:34:28 +0800</lastBuildDate>
+    
+        <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>github pages 博客</title>
+        <link>http://example.org/post/github-pages-blog/</link>
+        <pubDate>Fri, 02 Dec 2022 09:34:28 +0800</pubDate>
+        
+        <guid>http://example.org/post/github-pages-blog/</guid>
+        <description>姜小豆的日常 http://example.org/post/github-pages-blog/ -&lt;p&gt;选了一个博客主题，是基于hugo的。&lt;/p&gt;
+&lt;h4 id=&#34;步骤&#34;&gt;步骤&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;安装 &lt;a href=&#34;https://go.dev/doc/install&#34; title=&#34;Go&#34;&gt;Go&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装hugo &lt;code&gt;go install -tags extended github.com/gohugoio/hugo@latest&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;报错：go: &lt;a href=&#34;http://github.com/gohugoio/hugo@latest:&#34; title=&#34;github.com/gohugoio/hugo@latest:&#34;&gt;github.com/gohugoio/hugo@latest:&lt;/a&gt; module &lt;a href=&#34;http://github.com/gohugoio/hugo:&#34; title=&#34;github.com/gohugoio/hugo:&#34;&gt;github.com/gohugoio/hugo:&lt;/a&gt; Get &amp;ldquo;&lt;a href=&#34;https://proxy.golang.org/github.com/gohugoio/hugo/@v/list&#34; title=&#34;https://proxy.golang.org/github.com/gohugoio/hugo/@v/list&#34;&gt;https://proxy.golang.org/github.com/gohugoio/hugo/@v/list&lt;/a&gt;&amp;rdquo;: dial tcp 142.251.42.241:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.&lt;/p&gt;
+&lt;p&gt;需要设置模块代理 &lt;code&gt;go env -w GOPROXY=https://goproxy.cn&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;再次安装hugo，报错&lt;code&gt;cgo: C compiler &amp;quot;gcc&amp;quot; not found: exec: &amp;quot;gcc&amp;quot;: executable file not found in %PATH%&lt;/code&gt;。需要GCC，在&lt;a href=&#34;https://gohugo.io/installation/windows/#build-from-source&#34; title=&#34;go huge&#34;&gt;go huge&lt;/a&gt;源码安装页面也有说明。&lt;/p&gt;
+&lt;p&gt;可以安装mingw，把bin放到环境变量Path中。&lt;/p&gt;
+&lt;p&gt;输入 &lt;code&gt;hugo version&lt;/code&gt; 报错。放弃这个方法。直接&lt;a href=&#34;https://github.com/gohugoio/hugo/releases/tag/v0.107.0&#34; title=&#34;下载安装包&#34;&gt;下载安装包&lt;/a&gt;（intel下载amd即可）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;github上新建一个 username.github.io 的仓库。（username是自己在github的用户名）。拉取仓库&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建站点&lt;/p&gt;
+&lt;p&gt;进入仓库的目录，输入 &lt;code&gt;hugo new site xxx&lt;/code&gt;，新建站点&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;进入xxx/themes, 克隆一个&lt;a href=&#34;https://themes.gohugo.io/&#34; title=&#34;主题&#34;&gt;主题&lt;/a&gt;。（也可以用子模块引用的方式，不过我受过伤就不用了）&lt;/p&gt;
+&lt;p&gt;我用了&lt;a href=&#34;https://themes.gohugo.io/themes/hugo-theme-diary/&#34; title=&#34;这个主题&#34;&gt;这个主题&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git clone git@github.com:AmazingRise/hugo-theme-diary.git diary&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;配置，打开xxx/config.toml 增加主题 &lt;code&gt;theme = &#39;diary&#39;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;本地运行预览，xxx 目录下，&lt;code&gt;hugo server -D&lt;/code&gt;。访问 &lt;a href=&#34;http://localhost:1313/&#34; title=&#34;http://localhost:1313/&#34;&gt;http://localhost:1313/&lt;/a&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+- http://example.org/post/github-pages-blog/ - </description>
+        </item>
+    
+    
+  </channel>
+</rss> 
