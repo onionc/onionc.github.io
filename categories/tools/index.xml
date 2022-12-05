@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>姜小豆的日常</title>
-    <link>https://onionc.github.io/</link>
-    <description>Recent content on 姜小豆的日常</description>
+    <title>tools on 姜小豆的日常</title>
+    <link>https://onionc.github.io/categories/tools/</link>
+    <description>Recent content in tools on 姜小豆的日常</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sun, 04 Dec 2022 10:39:02 +0800</lastBuildDate><atom:link href="https://onionc.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>你好</title>
-      <link>https://onionc.github.io/note/2022-12-04-%E4%BD%A0%E5%A5%BD/</link>
-      <pubDate>Sun, 04 Dec 2022 10:39:02 +0800</pubDate>
-      
-      <guid>https://onionc.github.io/note/2022-12-04-%E4%BD%A0%E5%A5%BD/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Fri, 02 Dec 2022 09:34:28 +0800</lastBuildDate><atom:link href="https://onionc.github.io/categories/tools/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>github pages 搭建博客</title>
       <link>https://onionc.github.io/post/2022-12-02-set-up-blog-on-github/</link>
@@ -29,15 +20,6 @@
 报错：go: github.com/gohugoio/hugo@latest: module github.com/gohugoio/hugo: Get &amp;ldquo;https://proxy.golang.org/github.com/gohugoio/hugo/@v/list&amp;quot;: dial tcp 142.251.42.241:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
 需要设置模块代理 go env -w GOPROXY=https://goproxy.cn。
 再次安装hugo，报错cgo: C compiler &amp;quot;gcc&amp;quot; not found: exec: &amp;quot;gcc&amp;quot;: executable file not found in %PATH%。需要GCC，在go huge源码安装页面也有说明。</description>
-    </item>
-    
-    <item>
-      <title>关于我</title>
-      <link>https://onionc.github.io/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://onionc.github.io/about/</guid>
-      <description>好像没啥可说的。</description>
     </item>
     
   </channel>

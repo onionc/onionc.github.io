@@ -9,18 +9,17 @@
     <lastBuildDate>Fri, 02 Dec 2022 09:34:28 +0800</lastBuildDate><atom:link href="https://onionc.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>github pages 搭建博客</title>
-      <link>https://onionc.github.io/post/set-up-blog-on-github/</link>
+      <link>https://onionc.github.io/post/2022-12-02-set-up-blog-on-github/</link>
       <pubDate>Fri, 02 Dec 2022 09:34:28 +0800</pubDate>
       
-      <guid>https://onionc.github.io/post/set-up-blog-on-github/</guid>
-      <description>选了一个博客主题，是基于hugo的。
+      <guid>https://onionc.github.io/post/2022-12-02-set-up-blog-on-github/</guid>
+      <description>想要找个地方写博客， 最后决定使用github pages搭建。和阮大佬搭建一个免费的，无限流量的Blog说的一样，经历几个阶段，最后还是想找一个自由不受平台限制的，又不太麻烦的博客平台。
+选了一个博客主题，是基于hugo的。
 步骤 安装 Go
 安装hugo go install -tags extended github.com/gohugoio/hugo@latest
 报错：go: github.com/gohugoio/hugo@latest: module github.com/gohugoio/hugo: Get &amp;ldquo;https://proxy.golang.org/github.com/gohugoio/hugo/@v/list&amp;quot;: dial tcp 142.251.42.241:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
 需要设置模块代理 go env -w GOPROXY=https://goproxy.cn。
-再次安装hugo，报错cgo: C compiler &amp;quot;gcc&amp;quot; not found: exec: &amp;quot;gcc&amp;quot;: executable file not found in %PATH%。需要GCC，在go huge源码安装页面也有说明。
-可以安装mingw，把bin放到环境变量Path中。
-输入 hugo version 报错。放弃这个方法。直接下载安装包（intel下载amd即可）。</description>
+再次安装hugo，报错cgo: C compiler &amp;quot;gcc&amp;quot; not found: exec: &amp;quot;gcc&amp;quot;: executable file not found in %PATH%。需要GCC，在go huge源码安装页面也有说明。</description>
     </item>
     
   </channel>

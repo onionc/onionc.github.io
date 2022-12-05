@@ -2,28 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://onionc.github.io/yiya/</loc>
+    <loc>https://onionc.github.io/note/</loc>
     <lastmod>2022-12-04T10:39:02+08:00</lastmod>
   </url><url>
-    <loc>https://onionc.github.io/yiya/hello/</loc>
+    <loc>https://onionc.github.io/note/2022-12-04-%E4%BD%A0%E5%A5%BD/</loc>
     <lastmod>2022-12-04T10:39:02+08:00</lastmod>
   </url><url>
     <loc>https://onionc.github.io/</loc>
     <lastmod>2022-12-04T10:39:02+08:00</lastmod>
   </url><url>
-    <loc>https://onionc.github.io/tags/blog/</loc>
-    <lastmod>2022-12-02T09:34:28+08:00</lastmod>
-  </url><url>
     <loc>https://onionc.github.io/categories/</loc>
-    <lastmod>2022-12-02T09:34:28+08:00</lastmod>
-  </url><url>
-    <loc>https://onionc.github.io/categories/development/</loc>
     <lastmod>2022-12-02T09:34:28+08:00</lastmod>
   </url><url>
     <loc>https://onionc.github.io/tags/github/</loc>
     <lastmod>2022-12-02T09:34:28+08:00</lastmod>
   </url><url>
-    <loc>https://onionc.github.io/post/set-up-blog-on-github/</loc>
+    <loc>https://onionc.github.io/post/2022-12-02-set-up-blog-on-github/</loc>
     <lastmod>2022-12-02T09:34:28+08:00</lastmod>
   </url><url>
     <loc>https://onionc.github.io/post/</loc>
@@ -32,7 +26,9 @@
     <loc>https://onionc.github.io/tags/</loc>
     <lastmod>2022-12-02T09:34:28+08:00</lastmod>
   </url><url>
-    <loc>https://onionc.github.io/categories/vim/</loc>
+    <loc>https://onionc.github.io/categories/tools/</loc>
     <lastmod>2022-12-02T09:34:28+08:00</lastmod>
+  </url><url>
+    <loc>https://onionc.github.io/about/</loc>
   </url>
 </urlset>
