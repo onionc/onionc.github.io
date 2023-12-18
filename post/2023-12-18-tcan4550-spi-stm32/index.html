@@ -41,66 +41,124 @@
 <h3 id="0逻辑分析仪数据不固定">0.逻辑分析仪数据不固定</h3>
 <p>使用逻辑分析仪分析的时候发现有时的数据都不固定，原因是采样率不够，采样率需要是SPI频率的5-10倍。最后我降了SPI时钟（来自APB2分频）后，数据固定。</p>
 <p>以及第一帧数据有<code>the inital(idle) state of the CLK line does not natch the setting</code> 提醒，配置CPOL 和 CPHA 以及MSB/LSB等。</p>
-<p><img src="./images/TCAN4550_SPI/image_19xwjCBvlB.png" alt=""></p>
+<p><img src="../images/TCAN4550_SPI/image_19xwjCBvlB.png" alt=""></p>
 <h3 id="1清除spi-err-flag">1.清除SPI err flag</h3>
 <p>TCAN4x5x_Device_ClearSPIERR(); // Clear any SPI ERR flags that might be set as a result of our pin mux changing during MCU startup</p>
 <p>调用了</p>
 <p> AHB_WRITE_32(0x0c, 0xFFFFFFFF);       // Simply write all 1s to attempt to clear a SPIERR that was set</p>
-<pre tabindex="0"><code class="language-纯文本" data-lang="纯文本">void
-AHB_WRITE_32(uint16_t address, uint32_t data)
-{
-    AHB_WRITE_BURST_START(address, 1);  // 61 00 0c 01
-    AHB_WRITE_BURST_WRITE(data); // ff ff ff ff 
-    AHB_WRITE_BURST_END();
-}
-</code></pre><p>从机未开机时：数据正常</p>
-<p><img src="./images/TCAN4550_SPI/image_RJvNBbJNAu.png" alt=""></p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">AHB_WRITE_32</span>(<span style="color:#66d9ef">uint16_t</span> address, <span style="color:#66d9ef">uint32_t</span> data)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">AHB_WRITE_BURST_START</span>(address, <span style="color:#ae81ff">1</span>);  <span style="color:#75715e">// 61 00 0c 01
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">AHB_WRITE_BURST_WRITE</span>(data); <span style="color:#75715e">// ff ff ff ff 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">AHB_WRITE_BURST_END</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>从机未开机时：数据正常</p>
+<p><img src="../images/TCAN4550_SPI/image_RJvNBbJNAu.png" alt=""></p>
 <p>从机开机，数据则不对。发现是因为引脚连接的问题。如果双方都有MOSI MISO 标识，则MOSI接MOSI，MISO接MISO即可。但是从机上只有SDI 和 SDO。我直接把主机MOSI接SDO，MISO接SDI了。其实是错的，按名称MOSI（主发从收）应该接从机的SDI（串行输入），MISO接SDO。接了后就好了</p>
 <h3 id="2初始化问题">2.初始化问题</h3>
 <p>用demo把最近的发送加上去了，初始化+发送。但是一直没有反应，也不清楚是哪一块的配置问题。就在初始化中输出排查，发现 从5 这里就一直失败，得RESET才能再次设置</p>
-<p><img src="./images/TCAN4550_SPI/image_Cnm68QZ0Tm.png" alt=""></p>
+<p><img src="../images/TCAN4550_SPI/image_Cnm68QZ0Tm.png" alt=""></p>
 <p>查了好久都没进展。去github上搜了一下，打开一个demo项目发现底下赫然出现的一行字</p>
-<p><img src="./images/TCAN4550_SPI/image_6pW9xdsWxN.png" alt=""></p>
+<p><img src="../images/TCAN4550_SPI/image_6pW9xdsWxN.png" alt=""></p>
 <p>便去检查了下共地，（最开始加了，在调试过程中拔掉忘记了）。把GND接上，再发送则成功。</p>
 <p>在DEMO中也有说明：</p>
-<pre tabindex="0"><code class="language-纯文本" data-lang="纯文本"> *  Pinout
- *   - P1.4 SPI Clock / SCLK
- *   - P1.6 MOSI / SDI
- *   - P1.7 MISO / SDO
- *   - P2.5 SPI Chip Select / nCS
- *
- *   - P2.3 MCAN Interrupt 1 / nINT
- *   - Ground wire is important
- *
-</code></pre><p><img src="./images/TCAN4550_SPI/image_2KathaS-DE.png" alt=""></p>
-<p><img src="./images/TCAN4550_SPI/image_gUqN70bvRn.png" alt=""></p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Text" data-lang="Text"><span style="display:flex;"><span> *  Pinout
+</span></span><span style="display:flex;"><span> *   - P1.4 SPI Clock / SCLK
+</span></span><span style="display:flex;"><span> *   - P1.6 MOSI / SDI
+</span></span><span style="display:flex;"><span> *   - P1.7 MISO / SDO
+</span></span><span style="display:flex;"><span> *   - P2.5 SPI Chip Select / nCS
+</span></span><span style="display:flex;"><span> *
+</span></span><span style="display:flex;"><span> *   - P2.3 MCAN Interrupt 1 / nINT
+</span></span><span style="display:flex;"><span> *   - Ground wire is important
+</span></span><span style="display:flex;"><span> *
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="../images/TCAN4550_SPI/image_2KathaS-DE.png" alt=""></p>
+<p><img src="../images/TCAN4550_SPI/image_gUqN70bvRn.png" alt=""></p>
 <h3 id="3接收数据">3.接收数据</h3>
 <p>MCU设置引脚外部中断，连接CAN卡的GPO2引脚。</p>
 <p>初始化修改 <code>devConfig.GPO2_CONFIG = TCAN4x5x_DEV_CONFIG_GPO2_MCAN_INT0;</code></p>
-<p><img src="./images/TCAN4550_SPI/image_7hg6kuRcKx.png" alt=""></p>
+<p><img src="../images/TCAN4550_SPI/image_7hg6kuRcKx.png" alt=""></p>
 <p>中断处理中计数</p>
-<pre tabindex="0"><code class="language-纯文本" data-lang="纯文本">volatile uint8_t TCAN_Int_Cnt = 0;          // A variable used to keep track of interrupts the MCAN Interrupt pin
-
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
-{
-  switch(GPIO_Pin){
-      case CAN_INT_Pin:
-        TCAN_Int_Cnt++;
-        break;
-  }
-}
-</code></pre><p>使用demo代码接收数据即可。</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">uint8_t</span> TCAN_Int_Cnt <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;          <span style="color:#75715e">// A variable used to keep track of interrupts the MCAN Interrupt pin
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">HAL_GPIO_EXTI_Callback</span>(<span style="color:#66d9ef">uint16_t</span> GPIO_Pin)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">switch</span>(GPIO_Pin){
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">case</span> CAN_INT_Pin:
+</span></span><span style="display:flex;"><span>        TCAN_Int_Cnt<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用demo代码接收数据即可。</p>
 <h3 id="4总结">4.总结</h3>
 <p>关键在连线上：</p>
-<pre tabindex="0"><code class="language-纯文本" data-lang="纯文本">mcu         can卡
-
-SCLK        SCLK
-MISO        SDO
-MOSI        SDI
-片选         nCS
-外部中断     GPO2
-GND         GND
-</code></pre><p>然后用demo代码就可以了。</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Text" data-lang="Text"><span style="display:flex;"><span>mcu         can卡
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SCLK        SCLK
+</span></span><span style="display:flex;"><span>MISO        SDO
+</span></span><span style="display:flex;"><span>MOSI        SDI
+</span></span><span style="display:flex;"><span>片选         nCS
+</span></span><span style="display:flex;"><span>外部中断     GPO2
+</span></span><span style="display:flex;"><span>GND         GND
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后用demo代码就可以了。</p>
 <p>如果用逻辑分析仪看SPI波形，需要注意配置。</p>
 <p><strong>参考：</strong></p>
 <ul>
