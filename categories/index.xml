@@ -6,7 +6,16 @@
     <description>Recent content in Categories on 姜小豆的日常</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 02 Dec 2022 09:34:28 +0800</lastBuildDate><atom:link href="https://onionc.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Dec 2023 15:13:29 +0800</lastBuildDate><atom:link href="https://onionc.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>STM32</title>
+      <link>https://onionc.github.io/categories/stm32/</link>
+      <pubDate>Mon, 18 Dec 2023 15:13:29 +0800</pubDate>
+      
+      <guid>https://onionc.github.io/categories/stm32/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>tools</title>
       <link>https://onionc.github.io/categories/tools/</link>

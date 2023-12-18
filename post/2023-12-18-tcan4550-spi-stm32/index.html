@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TCAN4550 SPI通讯 | 姜小豆的日常</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">首页</a></li>
+      
+      <li><a href="/post/">技术文章</a></li>
+      
+      <li><a href="/note/">日志</a></li>
+      
+      <li><a href="/categories">分类</a></li>
+      
+      <li><a href="/tags">标签</a></li>
+      
+      <li><a href="/about">关于我</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">TCAN4550 SPI通讯</span></h1>
+
+<h2 class="date">2023/12/18</h2>
+</div>
+
+<main>
+<h1 id="tcan4550-spi通讯">TCAN4550 SPI通讯</h1>
+<p>TCAN4550，SPI 转 CANFD 的 CAN卡。使用 STM32F4 通过 SPI 进行收发测试，记录遇到的一些问题。</p>
+<h3 id="0逻辑分析仪数据不固定">0.逻辑分析仪数据不固定</h3>
+<p>使用逻辑分析仪分析的时候发现有时的数据都不固定，原因是采样率不够，采样率需要是SPI频率的5-10倍。最后我降了SPI时钟（来自APB2分频）后，数据固定。</p>
+<p>以及第一帧数据有<code>the inital(idle) state of the CLK line does not natch the setting</code> 提醒，配置CPOL 和 CPHA 以及MSB/LSB等。</p>
+<p><img src="./images/TCAN4550_SPI/image_19xwjCBvlB.png" alt=""></p>
+<h3 id="1清除spi-err-flag">1.清除SPI err flag</h3>
+<p>TCAN4x5x_Device_ClearSPIERR(); // Clear any SPI ERR flags that might be set as a result of our pin mux changing during MCU startup</p>
+<p>调用了</p>
+<p> AHB_WRITE_32(0x0c, 0xFFFFFFFF);       // Simply write all 1s to attempt to clear a SPIERR that was set</p>
+<pre tabindex="0"><code class="language-纯文本" data-lang="纯文本">void
+AHB_WRITE_32(uint16_t address, uint32_t data)
+{
+    AHB_WRITE_BURST_START(address, 1);  // 61 00 0c 01
+    AHB_WRITE_BURST_WRITE(data); // ff ff ff ff 
+    AHB_WRITE_BURST_END();
+}
+</code></pre><p>从机未开机时：数据正常</p>
+<p><img src="./images/TCAN4550_SPI/image_RJvNBbJNAu.png" alt=""></p>
+<p>从机开机，数据则不对。发现是因为引脚连接的问题。如果双方都有MOSI MISO 标识，则MOSI接MOSI，MISO接MISO即可。但是从机上只有SDI 和 SDO。我直接把主机MOSI接SDO，MISO接SDI了。其实是错的，按名称MOSI（主发从收）应该接从机的SDI（串行输入），MISO接SDO。接了后就好了</p>
+<h3 id="2初始化问题">2.初始化问题</h3>
+<p>用demo把最近的发送加上去了，初始化+发送。但是一直没有反应，也不清楚是哪一块的配置问题。就在初始化中输出排查，发现 从5 这里就一直失败，得RESET才能再次设置</p>
+<p><img src="./images/TCAN4550_SPI/image_Cnm68QZ0Tm.png" alt=""></p>
+<p>查了好久都没进展。去github上搜了一下，打开一个demo项目发现底下赫然出现的一行字</p>
+<p><img src="./images/TCAN4550_SPI/image_6pW9xdsWxN.png" alt=""></p>
+<p>便去检查了下共地，（最开始加了，在调试过程中拔掉忘记了）。把GND接上，再发送则成功。</p>
+<p>在DEMO中也有说明：</p>
+<pre tabindex="0"><code class="language-纯文本" data-lang="纯文本"> *  Pinout
+ *   - P1.4 SPI Clock / SCLK
+ *   - P1.6 MOSI / SDI
+ *   - P1.7 MISO / SDO
+ *   - P2.5 SPI Chip Select / nCS
+ *
+ *   - P2.3 MCAN Interrupt 1 / nINT
+ *   - Ground wire is important
+ *
+</code></pre><p><img src="./images/TCAN4550_SPI/image_2KathaS-DE.png" alt=""></p>
+<p><img src="./images/TCAN4550_SPI/image_gUqN70bvRn.png" alt=""></p>
+<h3 id="3接收数据">3.接收数据</h3>
+<p>MCU设置引脚外部中断，连接CAN卡的GPO2引脚。</p>
+<p>初始化修改 <code>devConfig.GPO2_CONFIG = TCAN4x5x_DEV_CONFIG_GPO2_MCAN_INT0;</code></p>
+<p><img src="./images/TCAN4550_SPI/image_7hg6kuRcKx.png" alt=""></p>
+<p>中断处理中计数</p>
+<pre tabindex="0"><code class="language-纯文本" data-lang="纯文本">volatile uint8_t TCAN_Int_Cnt = 0;          // A variable used to keep track of interrupts the MCAN Interrupt pin
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+  switch(GPIO_Pin){
+      case CAN_INT_Pin:
+        TCAN_Int_Cnt++;
+        break;
+  }
+}
+</code></pre><p>使用demo代码接收数据即可。</p>
+<h3 id="4总结">4.总结</h3>
+<p>关键在连线上：</p>
+<pre tabindex="0"><code class="language-纯文本" data-lang="纯文本">mcu         can卡
+
+SCLK        SCLK
+MISO        SDO
+MOSI        SDI
+片选         nCS
+外部中断     GPO2
+GND         GND
+</code></pre><p>然后用demo代码就可以了。</p>
+<p>如果用逻辑分析仪看SPI波形，需要注意配置。</p>
+<p><strong>参考：</strong></p>
+<ul>
+<li><a href="https://blog.csdn.net/m0_49005156/article/details/108476593" title="CLK线的初始（空闲）状态与设置不匹配：the inital(idle) state of the CLK line does not natch the setting">CLK线的初始（空闲）状态与设置不匹配：the inital(idle) state of the CLK line does not natch the setting</a></li>
+<li><a href="https://e2e.ti.com/support/interface-group/interface/f/interface-forum/914947/tcan4550-problem-in-reading-register-from-spi" title="TCAN4550: Problem in reading register from SPI">TCAN4550: Problem in reading register from SPI</a></li>
+<li><a href="https://blog.csdn.net/lllmeimei/article/details/128408494" title="逻辑分析仪解析SPI数据">逻辑分析仪解析SPI数据</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/639642940" title="SPI接口的MISO和MOSI如何连接">SPI接口的MISO和MOSI如何连接</a></li>
+</ul>
+
+</main>
+
+  <footer>
+  
+  
+  <hr/>
+  © <a href="/">姜小豆</a> 2022 &ndash; 2023 | <a href="https://github.com/onionc">Github</a> | theme by <a href="https://github.com/yihui/hugo-xmin">yihui-xmin</a>
+  
+  </footer>
+  </body>
+</html>
+
