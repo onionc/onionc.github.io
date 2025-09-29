@@ -168,4 +168,90 @@ p.p.s. 因为设置了链接格式permalinks，包含有日期，所以之后就
 
 
 
+---
+
+### 更新：使用 Github Actions 实现自动构建
+
+这种方式超级方便，省去了自己搭建环境和部署的繁琐流程。只需要提交即可自动生成。
+
+终于可以愉快地写文章了。
+
+#### 构建流程
+
+- 你只需要维护 **一个仓库**，里面放 Markdown 和 Hugo 配置，不再需要本地安装 Hugo。
+- 每次写完文章直接 `git push`，GitHub Actions 会自动：
+  1. 安装 Hugo
+  2. 编译生成 `public`
+  3. 把 `public` 自动部署到 `username.github.io`
+
+配置方法：
+
+1. 在你的 Hugo 项目仓库里新建 `.github/workflows/deploy.yml`：
+
+   ```
+   name: Deploy Hugo site to Pages
+   
+   on:
+     push:
+       branches:
+         - main  # 或 master，看你用的分支
+   
+   jobs:
+     build:
+       runs-on: ubuntu-latest
+       steps:
+         - name: Checkout
+           uses: actions/checkout@v4
+           with:
+             submodules: true  # 拉取主题
+             fetch-depth: 0
+   
+         - name: Setup Hugo
+           uses: peaceiris/actions-hugo@v3
+           with:
+             hugo-version: 'latest'
+             extended: true
+   
+         - name: Build
+           run: hugo --minify
+   
+         - name: Deploy
+           uses: peaceiris/actions-gh-pages@v3
+           with:
+             github_token: ${{ secrets.GITHUB_TOKEN }}
+             publish_dir: ./public
+   ```
+
+2. 设置 GitHub Pages → Branch → `gh-pages`。（新建仓库的时候还没有，推送成功并自动部署后再选择保存即可）
+
+3. 完成！以后你只管写文章和 `git push`，GitHub 会自动帮你生成并发布。
+
+> 这样换电脑时，**只需要 Git 和编辑器**，不再需要 Go/Hugo。
+
+
+
+#### 仓库名录
+
+```
+.github/
+  workflows/
+    deploy.yml
+config.toml
+content/
+themes/
+```
+
+
+
+- config.toml 是 hugo 配置
+
+- themes 是主题目录
+
+- content 是文章目录
+
+- deploy.yml 是构建脚本
+
+
+
+
 
