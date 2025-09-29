@@ -1,0 +1,47 @@
+
+baseurl: "https://onionc.github.io/"
+languageCode: "zh"
+title: "姜小豆的日常"
+theme: "xmin"
+googleAnalytics: ""
+disqusShortname: ""
+ignoreFiles: ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$"]
+footnotereturnlinkcontents: "↩"
+
+
+permalinks:
+  note: "/note/:year-:month-:day-:slug/"
+  post: "/post/:year-:month-:day-:slug/"
+
+menu:
+  main:
+    - name: 首页
+      url: "/"
+      weight: 1
+    - name: 技术文章
+      url: "/post/"
+      weight: 2
+    - name: 日志
+      url: "/note/"
+      weight: 2
+    - name: 分类
+      url: "/categories"
+      weight: 3
+    - name: 标签
+      url: "/tags"
+      weight: 4
+    - name: 关于我
+      url: "about"
+
+params:
+  description: "A website built through Hugo and blogdown."
+  footer: "&copy; [姜小豆](/) 2022 -- {Year} | [Github](https://github.com/onionc) | theme by [yihui-xmin](https://github.com/yihui/hugo-xmin)"
+
+markup:
+  highlight:
+    codeFences: true
+    lineNos: true
+    lineNoStart: 1
+  goldmark:
+    renderer:
+      unsafe: true
