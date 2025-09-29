@@ -1,0 +1,115 @@
+<!doctype html><html lang=zh><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>github pages 搭建博客 | 姜小豆的日常</title><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css></head><body><nav><ul class=menu><li><a href=/>首页</a></li><li><a href=/post/>技术文章</a></li><li><a href=/note/>日志</a></li><li><a href=/categories>分类</a></li><li><a href=/tags>标签</a></li><li><a href=/about>关于我</a></li></ul><hr></nav><div class=article-meta><h1><span class=title>github pages 搭建博客</span></h1><h2 class=date>2022/12/02</h2></div><main><p>想要找个地方写博客， 最后决定使用github pages搭建。和阮大佬<a href=http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html>搭建一个免费的，无限流量的Blog</a>说的一样，经历几个阶段，最后还是想找一个自由不受平台限制的，又不太麻烦的博客平台。</p><p>选了一个博客主题，是基于hugo的。</p><h3 id=步骤>步骤</h3><ul><li><p>安装 <a href=https://go.dev/doc/install>Go</a></p></li><li><p>安装hugo <code>go install -tags extended github.com/gohugoio/hugo@latest</code></p><p>报错：go: github.com/gohugoio/hugo@latest: module github.com/gohugoio/hugo: Get &ldquo;<a href=https://proxy.golang.org/github.com/gohugoio/hugo/@v/list%22>https://proxy.golang.org/github.com/gohugoio/hugo/@v/list"</a>: dial tcp 142.251.42.241:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.</p><p>需要设置模块代理 <code>go env -w GOPROXY=https://goproxy.cn</code>。</p><p>再次安装hugo，报错<code>cgo: C compiler "gcc" not found: exec: "gcc": executable file not found in %PATH%</code>。需要GCC，在<a href=https://gohugo.io/installation/windows/#build-from-source>go huge</a>源码安装页面也有说明。</p><p>可以安装mingw，把bin放到环境变量Path中。</p><p>输入 <code>hugo version</code> 报错。放弃这个方法。直接<a href=https://github.com/gohugoio/hugo/releases/tag/v0.107.0>下载安装包</a>（intel下载amd即可）。</p></li><li><p>github上新建一个 username.github.io 的仓库。（username是自己在github的用户名）。拉取仓库</p></li><li><p>创建站点</p><p>进入仓库的目录，输入 <code>hugo new site xxx</code>，新建站点</p></li><li><p>进入xxx/themes, 克隆一个<a href=https://themes.gohugo.io/>主题</a>。（也可以用子模块引用的方式，不过我受过伤就不用了）</p><p>我用了<a href=https://themes.gohugo.io/themes/hugo-theme-diary/>这个主题</a></p><p><code>git clone git@github.com:AmazingRise/hugo-theme-diary.git diary</code></p></li><li><p>配置，打开xxx/config.toml 增加主题 <code>theme = 'diary'</code></p></li><li><p>本地运行预览，xxx 目录下，<code>hugo server -D</code>。访问 <a href=http://localhost:1313/>http://localhost:1313/</a>。</p></li><li><p>生成使用 <code>hugo -D</code> 命令。会将静态网站生成到 public 目录下。<code>-D</code> 参数是为了包含草稿文章。</p></li><li><p>新增文章</p><p><code>hugo new post/test.md</code> 在content/post/目录下新增了一个test.md文档。如果自己移动一个md文件进去是不会在网站显示的，因为没有格式说明，如下是yaml的格式：</p></li></ul><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">9
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>---
+</span></span><span style=display:flex><span>title: &#34;github pages 博客&#34;
+</span></span><span style=display:flex><span>date: 2022-12-02T09:34:28+08:00
+</span></span><span style=display:flex><span>description: &#39;搭建博客&#39;
+</span></span><span style=display:flex><span>tags: [ &#34;github&#34;, &#34;blog&#34;]
+</span></span><span style=display:flex><span>categories: [&#34;tools&#34;]
+</span></span><span style=display:flex><span>slug: &#34;github-pages-blog&#34;
+</span></span><span style=display:flex><span>draft: false
+</span></span><span style=display:flex><span>---
+</span></span></code></pre></td></tr></table></div></div><p>注：如果新建页面，里面文章列表为空的话，页面会显示404。有草稿文章但是发布时没有用<code>-D</code>参数也不算。</p><h3 id=最佳实践>最佳实践：</h3><ol><li><p>将带hugo主题的代码（hugo生成项目和主题拉取代码）放到一个私密库中。</p></li><li><p>将生成好的public 代码放到 username.github.io 库中。或者使用子模块（3-4步）</p></li><li><p>然后，使用submodule 将后者放到前者的子模块中。<code> git submodule add git@github.com:onionc/onionc.github.io.git ./public</code></p><p>（如果有public先删除）</p><p>（重新拉取hugo羡慕时，clone后需要 <code>git submodule update --init --recursive</code>来更新子模块）</p></li><li><p>在hugo项目下新建一个用来发布博客的脚本</p></li></ol><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Bash data-lang=Bash><span style=display:flex><span><span style=color:#75715e>#! /bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;---------- 删除(排除.git) -----------&#34;</span>
+</span></span><span style=display:flex><span>rm -rf public/* | egrep -v <span style=color:#e6db74>&#39;.git&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#生成</span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;---------- 生成(含草稿) ---------- &#34;</span>
+</span></span><span style=display:flex><span>hugo -D
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;---------- 上传git -------------&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> ! -d <span style=color:#e6db74>&#34;public&#34;</span> <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    echo  <span style=color:#e6db74>&#34;public 不存在&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#exit 0</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>    cd public
+</span></span><span style=display:flex><span>    git add .
+</span></span><span style=display:flex><span>    git commit -m <span style=color:#e6db74>&#34;update&#34;</span>
+</span></span><span style=display:flex><span>    git push origin main
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;---------  delay 60s ---------- &#34;</span>
+</span></span><span style=display:flex><span>sleep 1m
+</span></span></code></pre></td></tr></table></div></div><ol><li>上面的3、4步是子模块的方式（用了一段时间感觉不太好用）。如果是两个库分开放，脚本如下：</li></ol><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Bash data-lang=Bash><span style=display:flex><span><span style=color:#75715e>#! /bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#生成</span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;---------- 生成(含草稿) ---------- &#34;</span>
+</span></span><span style=display:flex><span>hugo -D
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;---------- 删除(排除.git) -----------&#34;</span>
+</span></span><span style=display:flex><span>find ../onionc.github.io/* -not -name <span style=color:#e6db74>&#34;.git&#34;</span> | xargs rm -rf
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;---------- 移动文件夹 ---------- &#34;</span>
+</span></span><span style=display:flex><span>cp -rf public/* ../onionc.github.io/
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;---------- 上传git -------------&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> ! -d <span style=color:#e6db74>&#34;../onionc.github.io&#34;</span> <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    echo  <span style=color:#e6db74>&#34;库不存在&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#exit 0</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>    cd ../onionc.github.io
+</span></span><span style=display:flex><span>    git add .
+</span></span><span style=display:flex><span>    git commit -m <span style=color:#e6db74>&#34;update&#34;</span>
+</span></span><span style=display:flex><span>    git push origin main
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;---------  delay 60s ---------- &#34;</span>
+</span></span><span style=display:flex><span>sleep 1m
+</span></span></code></pre></td></tr></table></div></div><h3 id=发布文章的流程>发布文章的流程</h3><ol><li>将md从某处复制到 <code>content</code> 下的某个子目录（也可以是content）。（需要增加格式头。名称和日期必须）</li><li>图片放到子目录的<code>images/</code> 文件夹，将md中的图片地址改为 <code>../images</code>。</li><li>点击发布脚本提交博客。</li><li>提交hugo项目。</li></ol><p><strong>预览：</strong></p><p><img src=../images/20221205/1670134455206_wq1xyXoCeo.jpg alt></p><p>p.s. 发现一个简洁的主题，很喜欢。<a href=https://yihui.org/>谢益辉</a>大佬的<a href=https://github.com/yihui/hugo-xmin>xmin</a>。感谢！</p><p><img src=../images/20221205/20221205102858.png alt></p><p>p.p.s. 因为设置了链接格式permalinks，包含有日期，所以之后就算更新了文章也不要轻易更新日期。</p><h3 id=参考>参考</h3><ul><li><a href=https://zhuanlan.zhihu.com/p/57361697>如何利用 GitHub Pages 和 Hugo 轻松搭建个人博客？</a></li><li><a href=https://blog.csdn.net/kakadiablo/article/details/119563791>git submodule 目录为空</a></li><li>待读<a href=https://www.jianshu.com/p/c5297a8bb1e7>Hugo 不完美教程 - II: Hugo 目录组织</a></li><li><a href=https://goodmemory.cc/hugo-md%e6%96%87%e6%a1%a3%e4%b9%a6%e5%86%99%e6%97%b6%e7%9a%84%e6%a0%bc%e5%bc%8f%e8%af%b4%e6%98%8e/>hugo-md文档书写时的格式说明</a></li><li><a href=https://www.gohugo.org/>Hugo中文文档</a></li></ul></main><footer><hr>© <a href=/>姜小豆</a> 2022 &ndash; 2025 | <a href=https://github.com/onionc>Github</a> | theme by <a href=https://github.com/yihui/hugo-xmin>yihui-xmin</a></footer></body></html>

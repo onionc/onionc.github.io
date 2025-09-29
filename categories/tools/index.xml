@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tools on 姜小豆的日常</title><link>https://onionc.github.io/categories/tools/</link><description>Recent content in Tools on 姜小豆的日常</description><generator>Hugo</generator><language>zh</language><lastBuildDate>Fri, 02 Dec 2022 09:34:28 +0800</lastBuildDate><atom:link href="https://onionc.github.io/categories/tools/index.xml" rel="self" type="application/rss+xml"/><item><title>github pages 搭建博客</title><link>https://onionc.github.io/post/2022-12-02-set-up-blog-on-github/</link><pubDate>Fri, 02 Dec 2022 09:34:28 +0800</pubDate><guid>https://onionc.github.io/post/2022-12-02-set-up-blog-on-github/</guid><description>&lt;p&gt;想要找个地方写博客， 最后决定使用github pages搭建。和阮大佬&lt;a href="http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html"&gt;搭建一个免费的，无限流量的Blog&lt;/a&gt;说的一样，经历几个阶段，最后还是想找一个自由不受平台限制的，又不太麻烦的博客平台。&lt;/p&gt;
+&lt;p&gt;选了一个博客主题，是基于hugo的。&lt;/p&gt;
+&lt;h3 id="步骤"&gt;步骤&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;安装 &lt;a href="https://go.dev/doc/install"&gt;Go&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装hugo &lt;code&gt;go install -tags extended github.com/gohugoio/hugo@latest&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;报错：go: github.com/gohugoio/hugo@latest: module github.com/gohugoio/hugo: Get &amp;ldquo;&lt;a href="https://proxy.golang.org/github.com/gohugoio/hugo/@v/list%22"&gt;https://proxy.golang.org/github.com/gohugoio/hugo/@v/list&amp;quot;&lt;/a&gt;: dial tcp 142.251.42.241:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.&lt;/p&gt;
+&lt;p&gt;需要设置模块代理 &lt;code&gt;go env -w GOPROXY=https://goproxy.cn&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;再次安装hugo，报错&lt;code&gt;cgo: C compiler &amp;quot;gcc&amp;quot; not found: exec: &amp;quot;gcc&amp;quot;: executable file not found in %PATH%&lt;/code&gt;。需要GCC，在&lt;a href="https://gohugo.io/installation/windows/#build-from-source"&gt;go huge&lt;/a&gt;源码安装页面也有说明。&lt;/p&gt;</description></item></channel></rss>
